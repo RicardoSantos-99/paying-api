@@ -6,16 +6,10 @@ defmodule PayingWeb.UsersController do
   action_fallback PayingWeb.FallbackController
 
   def create(conn, params) do
-    params
-    |> Paying.create_user()
-    |> handle_response(conn)
+    with {:ok, %User{} = user} <- Paying.create_user(params) do
+      conn
+      |> put_status(:created)
+      |> render("create,json", user: user)
+    end
   end
-
-  defp handle_response({:ok, %User{} = user}, conn) do
-    conn
-    |> put_status(:created)
-    |> render("create.json", user: user)
-  end
-
-  defp handle_response({:error, _result} = error, _conn), do: error
 end
