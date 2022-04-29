@@ -1,6 +1,6 @@
 defmodule Paying do
   alias Paying.Users.Create, as: UserCreate
-  alias Paying.Accounts.Deposit
+  alias Paying.Accounts.{Deposit, Withdraw}
 
   defdelegate create_user(params), to: UserCreate, as: :call
 
