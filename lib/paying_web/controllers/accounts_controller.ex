@@ -20,4 +20,12 @@ defmodule PayingWeb.AccountsController do
       |> render("update.json", account: account)
     end
   end
+
+  def transaction(conn, params) do
+    with {:ok, %{} = transaction} <- Paying.transaction(params) do
+      conn
+      |> put_status(:ok)
+      |> render("transaction.json", transaction: transaction)
+    end
+  end
 end
