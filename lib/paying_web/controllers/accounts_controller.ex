@@ -2,6 +2,7 @@ defmodule PayingWeb.AccountsController do
   use PayingWeb, :controller
 
   alias Paying.Account
+  alias Paying.Accounts.Transactions.Response, as: TransactionResponse
 
   action_fallback PayingWeb.FallbackController
 
@@ -22,7 +23,7 @@ defmodule PayingWeb.AccountsController do
   end
 
   def transaction(conn, params) do
-    with {:ok, %{} = transaction} <- Paying.transaction(params) do
+    with {:ok, %TransactionResponse{} = transaction} <- Paying.transaction(params) do
       conn
       |> put_status(:ok)
       |> render("transaction.json", transaction: transaction)

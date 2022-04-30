@@ -1,5 +1,6 @@
 defmodule PayingWeb.AccountsView do
   alias Paying.Account
+  alias Paying.Accounts.Transactions.Response, as: TransactionResponse
 
   def render("update.json", %{account: %Account{id: account_id, balance: balance}}) do
     %{
@@ -12,7 +13,7 @@ defmodule PayingWeb.AccountsView do
   end
 
   def render("transaction.json", %{
-        transaction: %{
+        transaction: %TransactionResponse{
           to_account: %Account{id: to_account_id, balance: to_balance},
           from_account: %Account{id: from_account_id, balance: from_balance}
         }

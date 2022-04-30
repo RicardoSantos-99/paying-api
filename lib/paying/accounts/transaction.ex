@@ -1,6 +1,7 @@
 defmodule Paying.Accounts.Transaction do
   alias Ecto.Multi
 
+  alias Paying.Accounts.Transactions.Response, as: TransactionResponse
   alias Paying.Accounts.Operation
   alias Paying.Repo
 
@@ -22,7 +23,7 @@ defmodule Paying.Accounts.Transaction do
         {:error, reason}
 
       {:ok, %{deposit: to_account, withdraw: from_account}} ->
-        {:ok, %{to_account: to_account, from_account: from_account}}
+        {:ok, TransactionResponse.build(from_account, to_account)}
     end
   end
 end
