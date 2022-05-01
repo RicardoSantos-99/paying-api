@@ -22,6 +22,10 @@ config :paying, Paying.Repo,
   migration_primary_key: [type: :binary_id],
   migration_foreign_key: [type: :binary_id]
 
+config :paying, :basic_auth,
+  username: "paying",
+  password: "paying"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
