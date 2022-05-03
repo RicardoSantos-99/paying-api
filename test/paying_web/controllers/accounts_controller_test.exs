@@ -28,7 +28,7 @@ defmodule PayingWeb.AccountsControllerTest do
         |> json_response(:ok)
 
       assert %{
-               "account" => %{"balance" => "0.00", "id" => _id},
+               "account" => %{"balance" => "50.00", "id" => _id},
                "message" => "Ballance changed successfully"
              } = response
     end
