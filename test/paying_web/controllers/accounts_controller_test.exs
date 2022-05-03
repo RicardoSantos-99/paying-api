@@ -1,5 +1,5 @@
 defmodule PayingWeb.AccountsControllerTest do
-  use PayingWeb.ConnCase
+  use PayingWeb.ConnCase, async: true
   alias Paying.{Account, User}
 
   describe "deposit/2" do

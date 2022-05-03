@@ -1,5 +1,5 @@
 defmodule Paying.NumbersTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias Paying.Numbers
 
